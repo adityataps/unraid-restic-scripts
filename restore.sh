@@ -6,7 +6,6 @@ echo "Restoring backup from snapshot: '$SNAPSHOT'..."
 source .env
 docker run \
 	--rm \
-	-d \
 	--name='restic-restore' \
 	--net='homelab' \
 	--pids-limit 2048 \

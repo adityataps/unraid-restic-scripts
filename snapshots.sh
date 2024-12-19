@@ -3,7 +3,6 @@
 source .env
 docker run \
 	--rm \
-	-d \
 	--name='restic-snapshots' \
 	--net='homelab' \
 	--pids-limit 2048 \
