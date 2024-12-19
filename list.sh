@@ -5,7 +5,8 @@ SNAPSHOT=${1:-latest}
 source .env
 docker run \
 	-d \
-	--name='restic-backup' \
+	--rm \
+	--name='restic-list' \
 	--net='homelab' \
 	--pids-limit 2048 \
 	-e TZ="America/New_York" \

@@ -4,6 +4,7 @@ echo 'Backing up shares to Restic repository...'
 
 source .env
 docker run \
+	--rm \
 	--name='restic-backup' \
 	--net='homelab' \
 	--pids-limit 2048 \
