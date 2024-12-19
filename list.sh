@@ -10,7 +10,7 @@ docker run \
 	--pids-limit 2048 \
 	-e TZ="America/New_York" \
 	-e HOST_OS="Unraid" \
-	-d HOST_HOSTNAME="HomeLab" \
+	-e HOST_HOSTNAME="HomeLab" \
 	-e HOST_CONTAINERNAME="restic" \
 	-e RESTIC_REPOSITORY="$RESTIC_REPOSITORY" \
 	-e AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
