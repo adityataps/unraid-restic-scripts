@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEFAULT_SCHEDULE="0 4 * * *" # Every day at 04:00
-COMMAND="backup.sh"
+COMMAND="$(pwd)/backup.sh"
 
 CRON_JOB="${1:-$DEFAULT_SCHEDULE} $COMMAND"
 
