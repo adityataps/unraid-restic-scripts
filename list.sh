@@ -4,7 +4,7 @@ SNAPSHOT=${1:-latest}
 
 source /boot/config/scripts/restic/.env
 docker run \
-	-d \
+	--rm \
 	--name='restic-list' \
 	--net='homelab' \
 	--pids-limit 2048 \
