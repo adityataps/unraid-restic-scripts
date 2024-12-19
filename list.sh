@@ -2,7 +2,7 @@
 
 SNAPSHOT=${1:-latest}
 
-source .env
+source /boot/config/scripts/restic/.env
 docker run \
 	-d \
 	--name='restic-list' \

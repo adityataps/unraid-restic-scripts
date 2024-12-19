@@ -3,7 +3,7 @@
 SNAPSHOT=${1:-latest}
 echo "Restoring backup from snapshot: '$SNAPSHOT'..."
 
-source .env
+source /boot/config/scripts/restic/.env
 docker run \
 	--rm \
 	--name='restic-restore' \

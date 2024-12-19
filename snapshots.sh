@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .env
+source /boot/config/scripts/restic/.env
 docker run \
 	--rm \
 	--name='restic-snapshots' \

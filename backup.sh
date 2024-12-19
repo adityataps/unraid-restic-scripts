@@ -2,7 +2,7 @@
 
 echo 'Backing up shares to Restic repository...'
 
-source .env
+source /boot/config/scripts/restic/.env
 docker run \
 	--rm \
 	--name='restic-backup' \
