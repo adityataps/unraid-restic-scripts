@@ -8,7 +8,7 @@ fi
 mkdir -p logs/
 
 DEFAULT_SCHEDULE="0 4 * * *" # Every day at 04:00
-COMMAND="bash /boot/config/scripts/restic/backup.sh >> /boot/config/scripts/restic/cron.log 2>&1"
+COMMAND="bash /boot/config/scripts/restic/backup.sh >> /boot/config/scripts/restic/logs/cron.log 2>&1"
 
 CRON_JOB="${1:-$DEFAULT_SCHEDULE} $COMMAND"
 
