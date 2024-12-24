@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '\n=========='
+printf '\n=========='
 echo `date`
 echo 'Backing up shares to Restic repository...'
 
