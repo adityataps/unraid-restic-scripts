@@ -5,6 +5,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+mkdir -p logs/
+
 DEFAULT_SCHEDULE="0 4 * * *" # Every day at 04:00
 COMMAND="bash /boot/config/scripts/restic/backup.sh >> /boot/config/scripts/restic/cron.log 2>&1"
 
@@ -22,7 +24,7 @@ if [[ -f /etc/logrotate.d/restic ]]; then
     echo "Logrotate configuration for Restic already exists."
 else
     cat > /etc/logrotate.d/restic <<EOF
-/boot/config/scripts/restic/cron.log {
+/boot/config/scripts/restic/logs/cron.log {
 	weekly              
 	rotate 4            
 	compress            
