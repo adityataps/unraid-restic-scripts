@@ -23,13 +23,13 @@ if [[ -f /etc/logrotate.d/restic ]]; then
 else
     cat > /etc/logrotate.d/restic <<EOF
 /boot/config/scripts/restic/cron.log {
-	weekly                 # Rotate the log file weekly
-	rotate 4               # Keep 4 old log files
-	compress               # Compress old log files (e.g., cron.log.1.gz)
-	delaycompress          # Delay compression until the next rotation
-	missingok              # Don’t throw an error if the file is missing
-	notifempty             # Don’t rotate if the log is empty
-	create 644 root root   # Recreate the log file with these permissions
+	weekly              
+	rotate 4            
+	compress            
+	delaycompress       
+	missingok           
+	notifempty          
+	create 644 root root
 }
 EOF
 	echo "Logrotate configured for Restic."
