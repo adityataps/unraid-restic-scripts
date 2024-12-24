@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo '\n=========='
+echo `date`
 echo 'Backing up shares to Restic repository...'
 
 source /boot/config/scripts/restic/.env
