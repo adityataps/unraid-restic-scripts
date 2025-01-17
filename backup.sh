@@ -1,17 +1,18 @@
 #!/bin/bash
 
-### 0. Source .env variables
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-ENV_FILE_PATH="$SCRIPT_DIR/.env"
-# shellcheck source=.env
-touch "$ENV_FILE_PATH" && source "$ENV_FILE_PATH"
+{
+  ### 0. Source .env variables
+  SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+  ENV_FILE_PATH="$SCRIPT_DIR/.env"
+  # shellcheck source=.env
+  touch "$ENV_FILE_PATH" && source "$ENV_FILE_PATH"
 
-### 1. Setup logrotate
-mkdir -p "$SCRIPT_DIR/logs"
-if [[ -f /etc/logrotate.d/restic ]]; then
-  echo "Logrotate configuration for Restic already exists."
-else
-  cat >/etc/logrotate.d/restic <<EOF
+  ### 1. Setup logrotate
+  mkdir -p "$SCRIPT_DIR/logs"
+  if [[ -f /etc/logrotate.d/restic ]]; then
+    echo "Logrotate configuration for Restic already exists."
+  else
+    cat >/etc/logrotate.d/restic <<EOF
 $SCRIPT_DIR/logs/cron.log {
 	weekly
 	rotate 4
@@ -22,16 +23,13 @@ $SCRIPT_DIR/logs/cron.log {
 	create 644 root root
 }
 EOF
-  echo "Logrotate configured for Restic."
-fi
+    echo "Logrotate configured for Restic."
+  fi
 
-### 2. Backup
-
-{
+  ### 2. Backup
   date
   printf '\n\n\n==========\n'
   echo 'Backing up shares to Restic repository...'
-
   docker run \
     --rm \
     --name='restic-backup' \
@@ -55,12 +53,9 @@ fi
     echo 'Could not back up to Restic.'
     exit 1
   }
-
   echo 'Finished backing up shares to Restic repository.'
-} >>/boot/config/scripts/restic/logs/cron.log 2>&1
 
-### 3. Prune backups
-{
+  ### 3. Prune backups
   echo 'Pruning backups...'
   docker run \
     --rm \
@@ -85,6 +80,5 @@ fi
     echo 'Could not prune Restic backups.'
     exit 1
   }
-
   echo 'Pruned backups.'
-}
+} | tee -a /boot/config/scripts/restic/logs/cron.log 2>&1
