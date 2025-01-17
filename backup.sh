@@ -7,7 +7,7 @@ ENV_FILE_PATH="$SCRIPT_DIR/.env"
 touch "$ENV_FILE_PATH" && source "$ENV_FILE_PATH"
 
 {
-  printf '\n\n\n------------------------------------------------------------------------------------------\n'
+  echo '------------------------------------------------------------------------------------------'
   date
   printf '\n=====\n'
 
@@ -82,5 +82,5 @@ EOF
     echo 'Could not prune Restic backups.'
     exit 1
   }
-  echo 'Pruned backups.'
+  printf 'Pruned backups.\n\n\n'
 } | tee -a "$SCRIPT_DIR/logs/cron.log" 2>&1
