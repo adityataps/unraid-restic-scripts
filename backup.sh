@@ -83,4 +83,4 @@ EOF
     exit 1
   }
   echo 'Pruned backups.'
-} | tee -a "$SCRIPT_DIR/logs/cron.log 2>&1"
+} | tee -a "$SCRIPT_DIR/logs/cron.log" 2>&1
