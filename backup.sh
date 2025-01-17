@@ -7,6 +7,7 @@ ENV_FILE_PATH="$SCRIPT_DIR/.env"
 touch "$ENV_FILE_PATH" && source "$ENV_FILE_PATH"
 
 exec > >(tee -a "$SCRIPT_DIR/logs/cron.log") 2>&1
+printf '\n\n\n==========\n'
 
 ### 1. Setup logrotate
 mkdir -p "$SCRIPT_DIR/logs"
@@ -29,7 +30,6 @@ fi
 
 ### 2. Backup
 date
-printf '\n\n\n==========\n'
 echo 'Backing up shares to Restic repository...'
 docker run \
   --rm \
