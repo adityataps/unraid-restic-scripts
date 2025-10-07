@@ -19,5 +19,6 @@ docker run \
   	-v '/mnt/user/aditya/':'/data/aditya/':'rw' \
   	-v '/mnt/user/lydia/':'/data/lydia/':'rw' \
   	-v '/mnt/user/shared/':'/data/shared/':'rw' \
+  	-v '/mnt/user/immich/':'/data/immich/':'rw' \
   	--hostname unraid 'restic/restic:latest' \
   	--password-file /pass snapshots

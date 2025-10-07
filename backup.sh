@@ -50,6 +50,7 @@ EOF
     -v '/mnt/user/aditya/':'/data/aditya/':'rw' \
     -v '/mnt/user/lydia/':'/data/lydia/':'rw' \
     -v '/mnt/user/shared/':'/data/shared/':'rw' \
+    -v '/mnt/user/immich/':'/data/immich/':'rw' \
     --hostname unraid 'restic/restic:latest' \
     --password-file /pass backup /data || {
     echo 'Could not back up to Restic.'
@@ -77,6 +78,7 @@ EOF
     -v '/mnt/user/aditya/':'/data/aditya/':'rw' \
     -v '/mnt/user/lydia/':'/data/lydia/':'rw' \
     -v '/mnt/user/shared/':'/data/shared/':'rw' \
+    -v '/mnt/user/immich/':'/data/immich/':'rw' \
     --hostname unraid 'restic/restic:latest' \
     --password-file /pass forget --keep-daily 7 --keep-weekly 4 --keep-monthly 6 --prune || {
     echo 'Could not prune Restic backups.'
